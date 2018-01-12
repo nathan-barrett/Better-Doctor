@@ -1,15 +1,37 @@
-import { Doctor, apiCall } from './../js/doctor.js';
+import { Doctor, afflictionCall, nameCall } from './../js/doctor.js';
 
 $(document).ready(function(){
-  $("form.doctor").submit(function(event) {
+  $("form.search-select").submit(function(event){
+    event.preventDefault();
+    const formSelect = $("select#search").val();
+    $("form.search-select").addClass("hidden");
+    console.log(formSelect);
+    if (formSelect === "Affliction") {
+      $("form.affliction").toggleClass("hidden");
+    } else {
+      $("form.doctor-name").toggleClass("hidden");
+    }
+  });
+  $("form.affliction").submit(function(event) {
     event.preventDefault();
     const query = $("input#problem").val();
     let doctor = new Doctor("Nathan", query);
-    apiCall(pushResults, query);
+    $("div#results").empty();
+    afflictionCall(pushResults, query);
+        // $("#problem").val(" ");
   });
-    function pushResults(response, array) {
+  $("form.doctor-name").submit(function(event) {
+    event.preventDefault();
+    const firstName = $("#first-name").val();
+    const lastName = $("#last-name").val();
+    console.log(firstName.length);
+    $("div#results").empty();
+    nameCall(pushResults, firstName, lastName);
+  });
+    function pushResults(response) {
+      console.log(response);
     if (response.meta.count === 0) {
-      alert("it looks like your search didnt receive any results");
+      alert("it looks like your search didnt receive any results, please reload page and try again.");
     } else {
       for(let i = 0; i < response.data.length; i++){
         let doctorNew = response.data[i].practices[0].accepts_new_patients;

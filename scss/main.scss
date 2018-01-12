@@ -1,0 +1,22 @@
+// .margin-auto {
+//   margin-left: 25%;
+// }
+
+// #select-btn {
+//   margin: 15px 25% 0 40%;
+// }
+
+div.row {
+  // display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .col-md-4 {
+    // display: inline-flex;
+    // justify-content: center;
+    img {
+      max-width: 100%;
+      align-self: center;
+      height: auto;
+    }
+  }
+}
