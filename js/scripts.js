@@ -1,1 +1,0 @@
-exports.exportModule = Module;
