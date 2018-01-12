@@ -1,18 +1,27 @@
-// .margin-auto {
-//   margin-left: 25%;
-// }
-
-// #select-btn {
-//   margin: 15px 25% 0 40%;
-// }
+body {
+  font-family:'Monda', sans-serif;
+  background: lightblue;
+  .jumbotron {
+    background: darken(lightblue, 25);
+    box-shadow: 10px 5px 2px grey;
+    h1 {
+      color: white;
+    }
+  }
+  #select-btn {
+    background-color: darken(lightblue, 25);
+  }
+}
 
 div.row {
   // display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   .col-md-4 {
-    // display: inline-flex;
-    // justify-content: center;
+    transition: fade-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     img {
       max-width: 100%;
       align-self: center;

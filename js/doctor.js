@@ -7,11 +7,11 @@ export class Doctor{
 }
 export function afflictionCall(pushResults, userQuery) {
   const query = `query=${userQuery}`;
-  const url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=or-portland&skip=0&limit=10&user_key=${apiKey}`;
+  const url = `https://api.betterdoctor.com/2016-03-01/doctors?${query}&location=or-portland&skip=0&limit=12&user_key=${apiKey}`;
   $.get(url).then(function(response){
     pushResults(response);
   }).catch(function(error) {
-    console.log("Looks like we can across this error: " + error);
+    alert("Looks like we came across this error: " + error);
   });
 }
 
@@ -24,12 +24,12 @@ export function nameCall(pushResults, firstName, lastName) {
   } else {
    nameInput = `name=${firstName}%20${lastName}`;
   }
-  console.log(nameInput);
-  const nameUrl = `https://api.betterdoctor.com/2016-03-01/doctors?${nameInput}&location=or-portland&skip=0&limit=10&user_key=${apiKey}`;
-  console.log(nameUrl);
+  const nameUrl = `https://api.betterdoctor.com/2016-03-01/doctors?${nameInput}&location=or-portland&skip=0&limit=12&user_key=${apiKey}`;
   $.get(nameUrl).then(function(response) {
+    console.log(response);
     pushResults(response);
   }).catch(function(error) {
-    alert("Looks like we can across this error: " + error + ", please reload page and try again");
+    const errMessage = "Looks like we can across this error: " + error + ", please reload page and try again";
+    errResponse(errMessage);
   });
 }

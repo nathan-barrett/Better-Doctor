@@ -28,10 +28,19 @@ $(document).ready(function(){
     $("div#results").empty();
     nameCall(pushResults, firstName, lastName);
   });
+  function errResponse(error) {
+    const failureArray = ["./../../img/doctor1.jpg", "./../../img/doctor2.jpg", "./../../img/doctor3.jpg", "./../../img/doctor4.jpg", "./../../img/doctor5.jpg"];
+    const randomPic = failureArray[Math.floor(Math.random() * failureArray.length)];
+    $("#results").append(`<img src=${randomPic}>
+                          <h3>${error}</h3>`);
+  }
     function pushResults(response) {
       console.log(response);
     if (response.meta.count === 0) {
-      alert("it looks like your search didnt receive any results, please reload page and try again.");
+      const failureArray = ["./../../img/doctor1.jpg", "./../../img/doctor2.jpg", "./../../img/doctor3.jpg", "./../../img/doctor4.jpg", "./../../img/doctor5.jpg"];
+      const randomPic = failureArray[Math.floor(Math.random() * failureArray.length)];
+      $("#results").append(`<img src=${randomPic}>
+                            <h3>Your search didnt find anything, please try again.</h3>`);
     } else {
       for(let i = 0; i < response.data.length; i++){
         let doctorNew = response.data[i].practices[0].accepts_new_patients;
