@@ -11,7 +11,8 @@ export function afflictionCall(pushResults, userQuery) {
   $.get(url).then(function(response){
     pushResults(response);
   }).catch(function(error) {
-    alert("Looks like we came across this error: " + error);
+    const errMessage = "Looks like we can across this error: " + error + ", please reload page and try again";
+    errResponse(error);
   });
 }
 
