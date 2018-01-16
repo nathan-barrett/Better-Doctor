@@ -44,6 +44,8 @@ $(document).ready(function(){
     } else {
       for(let i = 0; i < response.data.length; i++){
         let doctorNew = response.data[i].practices[0].accepts_new_patients;
+        let number = response.data[i].practices[0].phones[0].number;
+        console.log(number.substr(0,3);
         function newPatientCheck() {
           if ( doctorNew === true) {
             return "Currently accepting new patients.";
@@ -56,7 +58,8 @@ $(document).ready(function(){
           <h2 class="name">
           ${response.data[i].profile.first_name}  ${response.data[i].profile.last_name}</h2>
           <img class="image" src=${response.data[i].profile.image_url}>
-          <p class="new-patients">${newPatientCheck()}
+          <p class="new-patients">${newPatientCheck()}</p>
+          <p class="number">${number.substr(0,3)}-${number.substr(4,6)}-${number.substr(6)}</p>
           <p class="street-address">${response.data[i].practices[0].visit_address.street}</p>
           <p class="city-state">${response.data[i].practices[0].visit_address.city},  ${response.data[i].practices[0].visit_address.state} ${response.data[0].practices[0].visit_address.zip}</p>
         </div>`
